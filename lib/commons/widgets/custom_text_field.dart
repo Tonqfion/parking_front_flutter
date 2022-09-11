@@ -25,7 +25,12 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
       ),
-      validator: null,
+      validator: (val) {
+        if (val == null || val.isEmpty) {
+          return '$hintText est vide';
+        }
+        return null;
+      },
     );
   }
 }

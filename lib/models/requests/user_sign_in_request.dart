@@ -1,27 +1,23 @@
 import 'dart:convert';
 
-class UserRequest {
-  final String username;
+class UserSignInRequest {
   final String email;
   final String password;
 
-  UserRequest({
-    required this.username,
+  UserSignInRequest({
     required this.email,
     required this.password,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'username': username,
       'email': email,
       'password': password,
     };
   }
 
-  factory UserRequest.fromMap(Map<String, dynamic> map) {
-    return UserRequest(
-      username: map['username'] ?? '',
+  factory UserSignInRequest.fromMap(Map<String, dynamic> map) {
+    return UserSignInRequest(
       email: map['email'] ?? '',
       password: map['password'] ?? '',
     );
@@ -29,6 +25,6 @@ class UserRequest {
 
   String toJson() => json.encode(toMap());
 
-  factory UserRequest.fromJson(String source) =>
-      UserRequest.fromMap(json.decode(source));
+  factory UserSignInRequest.fromJson(String source) =>
+      UserSignInRequest.fromMap(json.decode(source));
 }
