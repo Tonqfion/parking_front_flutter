@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:parking/features/home/screens/home_screen.dart';
+import 'package:parking/features/profile/screens/profile_screen.dart';
 
-import '../../constants/global_variables.dart';
+import '../../../constants/global_variables.dart';
 
-class BottomBar extends StatefulWidget {
-  static const routeName = '/actual-home';
+class ProfileBar extends StatefulWidget {
+  static const routeName = '/profile-home';
 
-  const BottomBar({Key? key}) : super(key: key);
+  const ProfileBar({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<ProfileBar> createState() => _ProfileBarState();
 }
 
-class _BottomBarState extends State<BottomBar> {
+class _ProfileBarState extends State<ProfileBar> {
   int _page = 0;
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
 
   List<Widget> pages = [
-    const HomeScreen(),
     const Center(
-      child: Text('Profile page'),
+      child: Text('Contribution page'),
     ),
+    const ProfileScreen(),
     const Center(
       child: Text('Contribution page'),
     ),
@@ -31,6 +33,11 @@ class _BottomBarState extends State<BottomBar> {
     setState(() {
       _page = page;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -44,17 +51,17 @@ class _BottomBarState extends State<BottomBar> {
         backgroundColor: GlobalVariables.backgroundColor,
         iconSize: 28,
         onTap: updatePage,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: const Icon(Icons.pin_drop_outlined),
+            icon: Icon(Icons.pin_drop_outlined),
             label: 'Carte',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.person_outlined),
+            icon: Icon(Icons.person_outlined),
             label: 'Profil',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.motorcycle_outlined),
+            icon: Icon(Icons.motorcycle_outlined),
             label: 'Contributions',
           ),
         ],

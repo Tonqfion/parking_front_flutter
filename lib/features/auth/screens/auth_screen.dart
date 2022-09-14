@@ -3,7 +3,7 @@ import 'package:parking/commons/widgets/custom_button.dart';
 import 'package:parking/constants/global_variables.dart';
 
 import '../../../commons/widgets/custom_text_field.dart';
-import '../services/auth_service.dart';
+import '../../guest/services/auth_service.dart';
 
 enum Auth {
   signIn,

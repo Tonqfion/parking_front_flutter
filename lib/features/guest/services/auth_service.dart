@@ -10,8 +10,8 @@ import 'package:parking/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../commons/widgets/bottom_bar.dart';
 import '../../../models/requests/user_sign_up_request.dart';
+import '../../profile/widgets/profile_bar.dart';
 
 class AuthService {
   // User registration
@@ -70,7 +70,7 @@ class AuthService {
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            BottomBar.routeName,
+            ProfileBar.routeName,
             (route) => false,
           );
           SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -92,7 +92,7 @@ class AuthService {
       if (token == null) {
         prefs.setString('x-auth-token', '');
       }
-      var tokenResponse = await http.post(
+      final tokenResponse = await http.post(
         Uri.parse(
           '$uri/api/token',
         ),
@@ -101,7 +101,7 @@ class AuthService {
           'x-auth-token': token!,
         },
       );
-      var response = jsonDecode(tokenResponse.body);
+      final response = jsonDecode(tokenResponse.body);
 
       if (response) {
         // get user data

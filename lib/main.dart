@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:parking/commons/widgets/bottom_bar.dart';
 import 'package:parking/constants/global_variables.dart';
-import 'package:parking/features/auth/services/auth_service.dart';
+import 'package:parking/features/guest/services/auth_service.dart';
+import 'package:parking/features/profile/widgets/profile_bar.dart';
 import 'package:parking/providers/user_provider.dart';
 import 'package:parking/router.dart';
 import 'package:provider/provider.dart';
 
-import 'features/auth/screens/auth_screen.dart';
+import 'features/guest/widgets/guest_bar.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Parking Moto',
       theme: ThemeData(
         colorScheme: const ColorScheme.light(
@@ -53,8 +54,8 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const BottomBar()
-          : const AuthScreen(),
+          ? const ProfileBar()
+          : const GuestBar(),
     );
   }
 }
