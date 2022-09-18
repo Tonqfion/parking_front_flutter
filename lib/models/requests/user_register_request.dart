@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-class UserSignUpRequest {
+class UserRegisterRequest {
   final String username;
   final String email;
   final String password;
 
-  UserSignUpRequest({
+  UserRegisterRequest({
     required this.username,
     required this.email,
     required this.password,
@@ -19,8 +19,8 @@ class UserSignUpRequest {
     };
   }
 
-  factory UserSignUpRequest.fromMap(Map<String, dynamic> map) {
-    return UserSignUpRequest(
+  factory UserRegisterRequest.fromMap(Map<String, dynamic> map) {
+    return UserRegisterRequest(
       username: map['username'] ?? '',
       email: map['email'] ?? '',
       password: map['password'] ?? '',
@@ -29,6 +29,6 @@ class UserSignUpRequest {
 
   String toJson() => json.encode(toMap());
 
-  factory UserSignUpRequest.fromJson(String source) =>
-      UserSignUpRequest.fromMap(json.decode(source));
+  factory UserRegisterRequest.fromJson(String source) =>
+      UserRegisterRequest.fromMap(json.decode(source));
 }

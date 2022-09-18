@@ -47,16 +47,16 @@ class _LoginScreenState extends State<LoginScreen> {
     _usernameController.dispose();
   }
 
-  void signUpUser() {
-    _authService.signUpUser(
+  void registerUser() {
+    _authService.registerUser(
         context: context,
         username: _usernameController.text,
         email: _emailController.text,
         password: _passwordController.text);
   }
 
-  void signInUser() {
-    _authService.signInUser(
+  void loginUser() {
+    _authService.loginUser(
         context: context,
         email: _emailController.text,
         password: _passwordController.text);
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           text: 'Se connecter',
                           onPressed: () {
                             if (_signInFormKey.currentState!.validate()) {
-                              signInUser();
+                              loginUser();
                             }
                           },
                         )

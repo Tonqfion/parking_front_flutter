@@ -47,16 +47,16 @@ class _AuthScreenState extends State<AuthScreen> {
     _usernameController.dispose();
   }
 
-  void signUpUser() {
-    _authService.signUpUser(
+  void registerUser() {
+    _authService.registerUser(
         context: context,
         username: _usernameController.text,
         email: _emailController.text,
         password: _passwordController.text);
   }
 
-  void signInUser() {
-    _authService.signInUser(
+  void loginUser() {
+    _authService.loginUser(
         context: context,
         email: _emailController.text,
         password: _passwordController.text);
@@ -139,7 +139,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             text: 'S\'inscrire',
                             onPressed: () {
                               if (_signUpFormKey.currentState!.validate()) {
-                                signUpUser();
+                                registerUser();
                               }
                             },
                           )
@@ -192,7 +192,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             text: 'Se connecter',
                             onPressed: () {
                               if (_signInFormKey.currentState!.validate()) {
-                                signInUser();
+                                loginUser();
                               }
                             },
                           )

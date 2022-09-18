@@ -5,31 +5,31 @@ import 'package:http/http.dart' as http;
 import 'package:parking/constants/error_handling.dart';
 import 'package:parking/constants/global_variables.dart';
 import 'package:parking/constants/utils.dart';
-import 'package:parking/models/requests/user_sign_in_request.dart';
+import 'package:parking/models/requests/user_login_request.dart';
 import 'package:parking/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../models/requests/user_sign_up_request.dart';
+import '../../../models/requests/user_register_request.dart';
 import '../../profile/widgets/profile_bar.dart';
 
 class AuthService {
   // User registration
-  void signUpUser({
+  void registerUser({
     required BuildContext context,
     required String username,
     required String email,
     required String password,
   }) async {
     try {
-      UserSignUpRequest userSignUpRequest = UserSignUpRequest(
+      UserRegisterRequest userRegisterRequest = UserRegisterRequest(
         username: username,
         email: email,
         password: password,
       );
       http.Response res = await http.post(
         Uri.parse('$uri/api/signup'),
-        body: userSignUpRequest.toJson(),
+        body: userRegisterRequest.toJson(),
         headers: <String, String>{
           'Content-Type': 'application/json; charseft=UTF-8',
         },
@@ -46,19 +46,19 @@ class AuthService {
     }
   }
 
-  void signInUser({
+  void loginUser({
     required BuildContext context,
     required String email,
     required String password,
   }) async {
     try {
-      UserSignInRequest userSignInRequest = UserSignInRequest(
+      UserLoginRequest userLoginRequest = UserLoginRequest(
         email: email,
         password: password,
       );
       http.Response res = await http.post(
         Uri.parse('$uri/api/signin'),
-        body: userSignInRequest.toJson(),
+        body: userLoginRequest.toJson(),
         headers: <String, String>{
           'Content-Type': 'application/json; charseft=UTF-8',
         },
