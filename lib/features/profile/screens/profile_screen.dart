@@ -76,10 +76,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const TextLargeBold(
+                          const TextLargeBoldBlack(
                             text: 'Coucou, ',
                           ),
-                          TextLargeBold(text: _username),
+                          TextLargeBoldBlack(text: _username),
                         ],
                       ),
                       const SmallVerticalSizedBox(),
